@@ -2,6 +2,8 @@
 	"title": "結果",
 	"body": [
 		["Message", "結果が出ました"],
-		["Link", "Google で自力で探す", "https://google.co.jp"]
+		["Link", "Google で自力で探す", "https://www.google.co.jp/search?q=%E6%97%85"],
+		["EnumForm", "_", ["初めから"]],
+		["getStory", "story.json"]
 	]
 }
