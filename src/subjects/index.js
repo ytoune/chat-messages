@@ -1,0 +1,2 @@
+
+export { story } from './story'
