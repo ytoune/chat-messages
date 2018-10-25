@@ -1,0 +1,20 @@
+{
+	"title": "旅",
+	"body": [
+		["set", "speaker", "旅bot"],
+		["Message", "こんにちは！"],
+		["delay", 200],
+		["Message", "あなたにふさわしいプランをたてます"],
+		["set", "speaker", "旅bot (ドヤ顔)"],
+		["delay", 400],
+		["Message", "何人で行きますか"],
+		["EnumForm", "menber", ["一人", "たくさん"]],
+		["Message", "__menber__ですね！"],
+		["delay", 200],
+		["Message", "予算を教えてください"],
+		["EnumForm", "budget", ["~ 2万", "2万 ~"]],
+		["Message", "プランの検索中です"],
+		["set", "file", "ajax.json"],
+		["getStory", ["menber", "budget"]]
+	]
+}
