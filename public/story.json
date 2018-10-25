@@ -14,7 +14,6 @@
 		["Message", "予算を教えてください"],
 		["EnumForm", "budget", ["~ 2万", "2万 ~"]],
 		["Message", "プランの検索中です"],
-		["set", "file", "ajax.json"],
-		["getStory", ["menber", "budget"]]
+		["getStory", "ajax.json", ["menber", "budget"]]
 	]
 }
