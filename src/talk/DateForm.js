@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { of } from 'rxjs'
 import { concatMap, filter } from 'rxjs/operators'
 
+import { Right } from '../views'
+
 export const DateForm = (vars, name) => {
 	let res
 	class Form extends Component {
@@ -22,10 +24,14 @@ export const DateForm = (vars, name) => {
 				e.preventDefault()
 				return false
 			}
-			return <form onSubmit={onSubmit}>
-				<input type="date" value={this.state.v} onChange={({target: {value}}) => this.setState({v: value})}/>
-				<button onClick={onSubmit}>ok</button>
-			</form>
+			return (
+				<Right>
+					<form onSubmit={onSubmit}>
+						<input type="date" value={this.state.v} onChange={({target: {value}}) => this.setState({v: value})}/>
+						<button onClick={onSubmit}>ok</button>
+					</form>
+				</Right>
+			)
 		}
 	}
 	return of(1, 0).pipe(

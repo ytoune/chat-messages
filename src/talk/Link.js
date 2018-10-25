@@ -2,10 +2,16 @@
 import React from 'react'
 import { of } from 'rxjs'
 
+import Button from '@material-ui/core/Button'
+
 /* eslint-disable react/jsx-no-target-blank */
-export const Link = (vars, title, href) => of(
-	<div>
-		<a href={href} target="_blank">{title}</a>
-	</div>
+const Ln = ({children, href}) => (
+	<a href={href} target="_blank">{children}</a>
 )
 /* eslint-enable */
+
+export const Link = (vars, title, href) => of(
+	<Button color="primary" href={href} component={Ln}>
+		{title}
+	</Button>
+)

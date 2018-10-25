@@ -1,6 +1,4 @@
 
-import { cloneElement } from 'react'
-
 import { from } from 'rxjs'
 import { switchMap, concatMap, filter, scan } from 'rxjs/operators'
 
@@ -23,7 +21,7 @@ export const story =
 			(lst, c) =>
 				CLEAR === c ?
 					[] :
-					[...lst, cloneElement(c, {key: lst.length})],
+					[...lst, c],
 			[]
 		),
 	)

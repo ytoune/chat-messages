@@ -4,8 +4,9 @@
 		["set", "speaker", "旅bot"],
 		["Message", "こんにちは！"],
 		["delay", 200],
-		["Message", "あなたにふさわしいプランをたてます"],
 		["set", "speaker", "旅bot (ドヤ顔)"],
+		["Message", "あなたにふさわしいプランをたてます"],
+		["set", "speaker", "旅bot"],
 		["delay", 400],
 		["Message", "何人で行きますか"],
 		["EnumForm", "menber", ["一人", "たくさん"]],
@@ -14,6 +15,6 @@
 		["Message", "予算を教えてください"],
 		["EnumForm", "budget", ["~ 2万", "2万 ~"]],
 		["Message", "プランの検索中です"],
-		["getStory", "ajax.json", ["menber", "budget"]]
+		["getStory", "ajax.json", "menber", "budget"]
 	]
 }

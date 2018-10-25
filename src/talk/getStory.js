@@ -7,7 +7,7 @@ import { pushPart } from '../subjects/part'
 
 import { stringify } from 'query-string'
 
-export const getStory = (vars, file, names) => {
+export const getStory = (vars, file, ...names) => {
 	const query = names.reduce((o, name) => ({...o, [name]: vars[name]}), {})
 	return of(1, 0).pipe(
 		concatMap(
