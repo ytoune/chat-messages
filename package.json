@@ -1,17 +1,22 @@
 {
   "name": "chat-messages",
+  "license": "MIT",
   "scripts": {
+    "deploy": "npm run-script build && npm run-script push-page",
+    "push-page": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
   "dependencies": {
     "@material-ui/core": "^3.3.1",
+    "gh-pages": "^2.0.1",
     "query-string": "^6.2.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "^2.0.5",
     "rxjs": "^6.3.3"
   },
+  "homepage": "https://ytoune.github.io/chat-messages/",
   "browserslist": [
     ">0.2%",
     "not dead",

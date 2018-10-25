@@ -2,7 +2,7 @@
 import { cloneElement } from 'react'
 
 import { from } from 'rxjs'
-import { concatMap, filter, scan } from 'rxjs/operators'
+import { switchMap, concatMap, filter, scan } from 'rxjs/operators'
 
 import { talk, NO_CHANGE, CLEAR } from '../talk'
 
@@ -10,10 +10,10 @@ import { part } from './part'
 
 export const story =
 	part.pipe(
-		concatMap(
+		switchMap(
 			({title, body}) => {
 				const el = document.querySelector('title')
-				if (el) el.innerText = title
+				if (el && title) el.innerText = title
 				return from(body)
 			}
 		),

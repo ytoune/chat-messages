@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import { story } from '../subjects'
+import { story } from './subjects'
 import { map } from 'rxjs/operators'
 
 export const App = withStyles({
@@ -34,7 +34,6 @@ export const App = withStyles({
 				story,
 			}
 		} = this
-		// console.log(story)
 		return (
 			<div className={root}>
 				{story}
