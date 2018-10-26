@@ -9,6 +9,8 @@ import { EnumForm } from './EnumForm'
 import { Link } from './Link'
 import { getStory } from './getStory'
 
+export { readFile } from './getStory'
+
 export {
 	CLEAR,
 	NO_CHANGE,

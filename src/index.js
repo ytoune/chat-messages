@@ -3,14 +3,11 @@ import React from 'react'
 import { render } from 'react-dom'
 
 import { App } from './App'
-import { pushPart } from './subjects/part'
+import { readFile } from './talk'
 
 const main = () => {
 
-	fetch('./story.json')
-		.then(r => r.json())
-		.then(book => pushPart(book))
-
+	readFile('./story.yaml')
 	render(<App/>, document.getElementById('screen'))
 
 }
