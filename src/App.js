@@ -3,10 +3,8 @@ import React, { Component } from 'react'
 
 import { withStyles } from '@material-ui/core/styles'
 
+import Paper from '@material-ui/core/Paper'
 import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-// import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
 
 import { story } from './subjects'
 import { map } from 'rxjs/operators'
@@ -25,6 +23,8 @@ export const App = withStyles({
 	content: {
 		paddingTop: 8,
 		paddingBottom: 8,
+		paddingLeft: 16,
+		paddingRight: 16,
 	},
 })(class App extends Component {
 	constructor(...p) {
@@ -52,11 +52,9 @@ export const App = withStyles({
 			<div className={root}>
 				{story.map((row, i) => (
 					<Card key={i} className={card}>
-						<CardActionArea>
-							<CardContent className={content}>
-								{row}
-							</CardContent>
-						</CardActionArea>
+						<Paper className={content}>
+							{row}
+						</Paper>
 					</Card>
 				))}
 			</div>
