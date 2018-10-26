@@ -1,28 +1,17 @@
 
-import React, { Fragment } from 'react'
+import React from 'react'
 import { of } from 'rxjs'
 
-import Chip from '@material-ui/core/Chip'
-import FaceIcon from '@material-ui/icons/Face'
+import { Message } from '../views'
 import Typography from '@material-ui/core/Typography'
 
-import { withStyles } from '@material-ui/core/styles'
-
-const Line = withStyles({
-	root: {
-		marginTop: '.5em',
-	}
-})(Typography)
-
-export const Message = (vars, text) => of(
-	<Fragment>
-		<Chip
-			icon={<FaceIcon />}
-			label={vars.speaker}
-			variant="outlined"
-		/>
-		<Line>{
-			text.replace(/__([a-zA-Z0-9]+)__/gui, (_, name) => vars[name])
-		}</Line>
-	</Fragment>
-)
+export const message = (vars, text) => {
+	const {speaker, icon} = vars
+	return of(
+		<Message icon={icon} speaker={speaker}>
+			<Typography>{
+				text.replace(/__([a-zA-Z0-9]+)__/gui, (_, name) => vars[name])
+			}</Typography>
+		</Message>
+	)
+}

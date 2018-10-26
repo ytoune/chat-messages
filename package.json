@@ -12,11 +12,15 @@
     "@material-ui/icons": "^3.0.1",
     "gh-pages": "^2.0.1",
     "js-yaml": "^3.12.0",
+    "luxon": "^1.4.4",
+    "material-ui-pickers": "^1.0.0",
     "query-string": "^6.2.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-loading": "^2.0.3",
     "react-scripts": "^2.0.5",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.3.3",
+    "smooth-scroll": "^14.2.1"
   },
   "homepage": "https://ytoune.github.io/chat-messages/",
   "browserslist": [

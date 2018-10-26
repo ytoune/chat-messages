@@ -2,34 +2,49 @@
 import React, { Component } from 'react'
 import { of } from 'rxjs'
 import { concatMap, filter } from 'rxjs/operators'
+import Button from '@material-ui/core/Button'
+import {
+	Right,
+	TimeInput,
+	DateInput,
+	DateTimeInput,
+} from '../views'
+import { DateTime } from 'luxon'
 
-import { Right } from '../views'
-
-export const DateForm = (vars, name) => {
+const wrap = (Input, outfmt, infmt) => (vars, name, initdatetime) => {
 	let res
 	class Form extends Component {
 		constructor(...p) {
 			super(...p)
 			this.state = {
-				v: '1990-01-01',
+				v: infmt && initdatetime ?
+					DateTime.fromFormat(initdatetime, infmt) :
+					DateTime.local(),
 				p: false,
 			}
 		}
 		render() {
-			if (this.state.p) return null
-			const onSubmit = e => {
-				vars[name] = this.state.v
+			if (this.state.p) return (
+				<Right>
+					<Button color="primary" readOnly>
+						{this.state.v.toFormat(outfmt)}
+					</Button>
+				</Right>
+			)
+			const onSubmit = () => {
+				const {state: {v}} = this
+				vars[name] = v.toFormat('yyyy-LL-dd')
 				this.setState({p: true})
 				res()
-				e.preventDefault()
-				return false
+			}
+			const onChange = async value => {
+				await this.setState({v: value})
+				onSubmit()
 			}
 			return (
 				<Right>
-					<form onSubmit={onSubmit}>
-						<input type="date" value={this.state.v} onChange={({target: {value}}) => this.setState({v: value})}/>
-						<button onClick={onSubmit}>ok</button>
-					</form>
+					<Input value={this.state.v} onChange={onChange}/>
+					<Button color="primary" onClick={onSubmit}>OK</Button>
 				</Right>
 			)
 		}
@@ -43,3 +58,8 @@ export const DateForm = (vars, name) => {
 		filter(_ => _),
 	)
 }
+
+
+export const dateForm = wrap(DateInput, 'y年L月d日', 'y-L-d')
+export const datetimeForm = wrap(DateTimeInput, 'y年L月d日 H時m分', 'y-L-d H:m')
+export const timeForm = wrap(TimeInput, 'H時m分', 'H:m')

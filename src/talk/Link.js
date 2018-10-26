@@ -10,7 +10,7 @@ const Ln = ({children, href}) => (
 )
 /* eslint-enable */
 
-export const Link = (vars, title, href) => of(
+export const link = (vars, title, href) => of(
 	<Button color="primary" href={href} component={Ln}>
 		{title}
 	</Button>

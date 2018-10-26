@@ -1,17 +1,31 @@
 title: 旅
-body:
-  - [set, speaker, 旅bot]
-  - [Message, こんにちは！]
-  - [delay, 200]
-  - [set, speaker, 旅bot (ドヤ顔)]
-  - [Message, あなたにふさわしいプランをたてます]
-  - [set, speaker, 旅bot]
-  - [delay, 400]
-  - [Message, 何人で行きますか]
-  - [EnumForm, menber, [一人, たくさん]]
-  - [Message, __menber__ですね！]
-  - [delay, 200]
-  - [Message, 予算を教えてください]
-  - [EnumForm, budget, [~ 2万, 2万 ~]]
-  - [Message, プランの検索中です]
-  - [getStory, ajax.yaml, menber, budget]
+body: [
+  [clear],
+  [set, speaker, 旅bot],
+  [pending, 300],
+  [set, icon, face],
+  [message, こんにちは！],
+  [pending, 400],
+  [set, speaker, 旅bot (ドヤ顔)],
+  [message, あなたにふさわしいプランをたてます],
+  [pending, 400],
+  [set, speaker, 旅bot],
+  [pending, 200],
+  [message, 誕生日を教えてください],
+  [dateForm, birthdate, 1960-1-1],
+  [pending, 200],
+  [message, いつ行きますか],
+  [datetimeForm, date],
+  [pending, 200],
+  [message, 何人で行きますか],
+  [enumForm, menber, [[一人, 1], [たくさん, 2]]],
+  [pending, 200],
+  [message, __menber__ですね！],
+  [pending, 400],
+  [message, 予算を教えてください],
+  [enumForm, budget, [[~ 4万, 3], [4万 ~, 4]]],
+  [pending, 200],
+  [message, プランの検索中です],
+  [pending, 1000],
+  [getStory, ajax.yaml, menber, budget],
+]
