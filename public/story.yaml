@@ -14,13 +14,19 @@ body: [
   [message, 誕生日を教えてください],
   [dateForm, birthdate, 1960-1-1],
   [pending, 200],
+  [message, __birthdate__ですね！],
+  [pending, 400],
   [message, いつ行きますか],
   [datetimeForm, date],
   [pending, 200],
   [message, 何人で行きますか],
   [enumForm, menber, [[一人, 1], [たくさん, 2]]],
   [pending, 200],
-  [message, __menber__ですね！],
+  [when, menber = 1, [
+    [message, お一人様ですね！],
+  ], [
+    [message, たくさんで行くのですね！],
+  ]]
   [pending, 400],
   [message, 予算を教えてください],
   [enumForm, budget, [[~ 4万, 3], [4万 ~, 4]]],

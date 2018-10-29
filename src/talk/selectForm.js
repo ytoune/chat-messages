@@ -7,7 +7,6 @@ import Input from '@material-ui/core/Input'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
-import InputLabel from '@material-ui/core/InputLabel'
 import Button from '@material-ui/core/Button'
 import { Right } from '../views'
 
@@ -78,7 +77,6 @@ export const selectForm = (vars, name, _enums, ...opts) => {
 				select,
 				onOpen,
 				onClose,
-				ref,
 			} = this
 			if (done) return (
 				<Right>

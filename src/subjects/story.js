@@ -1,6 +1,6 @@
 
 import { from } from 'rxjs'
-import { switchMap, concatMap, filter, scan, tap } from 'rxjs/operators'
+import { switchMap, concatMap, filter, scan } from 'rxjs/operators'
 
 import { talk, NO_CHANGE, CLEAR, POP } from '../talk'
 
@@ -20,9 +20,9 @@ export const story =
 		filter(v => NO_CHANGE !== v && v),
 		scan(
 			(lst, c) =>
-			CLEAR === c ? [] :
-			POP === c ? lst.slice(0, lst.length - 1) :
-			[...lst, c],
+				CLEAR === c ? [] :
+				POP === c ? lst.slice(0, lst.length - 1) :
+				[...lst, c],
 			[]
 		),
 	)

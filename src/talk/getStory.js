@@ -1,6 +1,6 @@
 
 import { of } from 'rxjs'
-import { concatMap, filter } from 'rxjs/operators'
+import { concatMap } from 'rxjs/operators'
 import { safeLoad } from 'js-yaml'
 import { pushPart } from '../subjects/part'
 import { stringify } from 'query-string'
@@ -17,6 +17,6 @@ export const readFile = (file, query) =>
 export const getStory = (vars, file, ...names) => {
 	const query = names.reduce((o, name) => ({...o, [name]: vars[name]}), {})
 	return of(0).pipe(
-		concatMap(n => readFile(file, query)),
+		concatMap(_ => readFile(file, query)),
 	)
 }

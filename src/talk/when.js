@@ -1,6 +1,6 @@
 
 import { of, from } from 'rxjs'
-import { concatMap, filter } from 'rxjs/operators'
+import { concatMap } from 'rxjs/operators'
 
 export const when = talk => (vars, ...args) => {
 	while (args.length) {
