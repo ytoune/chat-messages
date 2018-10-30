@@ -26,7 +26,7 @@ body: [
     [message, お一人様ですね！],
   ], [
     [message, たくさんで行くのですね！],
-  ]]
+  ]],
   [pending, 400],
   [message, 予算を教えてください],
   [enumForm, budget, [[~ 4万, 3], [4万 ~, 4]]],
