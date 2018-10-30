@@ -1,7 +1,11 @@
 title: 結果
 body: [
-  [message, 結果が出ました],
-  [link, Google で自力で探す, https://www.google.co.jp/search?q=%E6%97%85],
-  [enumForm, _, [初めから]],
-  [getStory, story.yaml],
+  [message, 結果が出ました]
+  [set, icon, sentiment_very_dissatisfied]
+  [pending, 200]
+  [message, 良いプランが思いつきませんでした…]
+  [pending, 200]
+  [link, Google で自力で探す, https://www.google.co.jp/search?q=%E6%97%85]
+  [enumForm, _, [初めから]]
+  [getStory, story.yaml]
 ]
