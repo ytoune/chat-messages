@@ -33,7 +33,7 @@ const wrap = (Input, outfmt, infmt) => (vars, name, initdatetime) => {
 			)
 			const onSubmit = () => {
 				const {state: {v}} = this
-				vars[name] = v.toFormat('yyyy-LL-dd')
+				vars[name] = v.toFormat(outfmt)
 				this.setState({p: true})
 				res()
 			}

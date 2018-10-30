@@ -34,4 +34,5 @@ const table = {
 	'<=': (q, w) => q <= w,
 	'>': (q, w) => q > w,
 	'>=': (q, w) => q >= w,
+	'has': (q, w) => ~q.indexOf(w),
 }

@@ -1,37 +1,57 @@
 title: 旅
 body: [
-  [clear],
-  [set, speaker, 旅bot],
-  [pending, 300],
-  [set, icon, face],
-  [message, こんにちは！],
-  [pending, 400],
-  [set, speaker, 旅bot (ドヤ顔)],
-  [message, あなたにふさわしいプランをたてます],
-  [pending, 400],
-  [set, speaker, 旅bot],
-  [pending, 200],
-  [message, 誕生日を教えてください],
-  [dateForm, birthdate, 1960-1-1],
-  [pending, 200],
-  [message, __birthdate__ですね！],
-  [pending, 400],
-  [message, いつ行きますか],
-  [datetimeForm, date],
-  [pending, 200],
-  [message, 何人で行きますか],
-  [enumForm, menber, [[一人, 1], [たくさん, 2]]],
-  [pending, 200],
+  [clear]
+  [set, speaker, 旅bot]
+  [pending, 300]
+  [set, icon, sentiment_satisfied]
+  [message, こんにちは！]
+  [pending, 400]
+  [set, icon, sentiment_very_satisfied]
+  [set, speaker, 旅bot (ドヤ顔)]
+  [message, あなたにふさわしいプランをたてます]
+  [set, icon, sentiment_satisfied]
+  [pending, 400]
+  [set, speaker, 旅bot]
+  [pending, 200]
+  [message, 誕生日を教えてください]
+  [dateForm, birthdate, 1960-1-1]
+  [pending, 200]
+  [message, __birthdate%month__月__birthdate%day__日ですね！]
+  [pending, 400]
+  [message, いつ行きますか？]
+  [datetimeForm, date]
+  [pending, 200]
+  [message, __date__ですね！]
+  [pending, 400]
+  [message, 何人で行きますか？]
+  [enumForm, menber, [[一人, 1] [たくさん, 2]]]
   [when, menber = 1, [
-    [message, お一人様ですね！],
-  ], [
-    [message, たくさんで行くのですね！],
+    [set, icon, mood]
+    [pending, 200]
+    [message, お一人様ですね！]
+    [set, icon, sentiment_satisfied]
+    [pending, 400]
+    [message, 性別を教えてください]
+    [enumForm, gender, [[男, male] [女, female]]]
+  ] [
+    [set, icon, sentiment_very_satisfied]
+    [pending, 200]
+    [message, たくさんで行くのですね！]
+    [set, icon, sentiment_satisfied]
   ]]
-  [pending, 400],
-  [message, 予算を教えてください],
-  [enumForm, budget, [[~ 4万, 3], [4万 ~, 4]]],
-  [pending, 200],
-  [message, プランの検索中です],
-  [pending, 1000],
-  [getStory, ajax.yaml, menber, budget],
+  [pending, 400]
+  [message, 予算を教えてください]
+  [selectForm, budget, [
+    [~ 1万円, 1]
+    [1万円 ~ 4万円, 2]
+    [4万円 ~ 10万円, 3]
+    [10万円 ~ 100万円, 4]
+    [100万円 ~ , 5]
+  ]]
+  [set, icon, autorenew]
+  [pending, 200]
+  [message, プランの検索中です]
+  [pending, 1000]
+  [set, icon, sentiment_satisfied]
+  [getStory, ajax.yaml, menber, budget]
 ]

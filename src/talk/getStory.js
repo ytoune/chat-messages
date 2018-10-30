@@ -5,7 +5,7 @@ import { safeLoad } from 'js-yaml'
 import { pushPart } from '../subjects/part'
 import { stringify } from 'query-string'
 
-const parseYaml = _ => safeLoad(_)
+const parseYaml = _ => safeLoad(_.replace(/](\s+)\[/gui, '],$1['))
 
 export const readFile = (file, query) =>
 	fetch(`./${file}?${stringify(query)}`)

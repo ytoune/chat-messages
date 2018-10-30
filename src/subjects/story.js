@@ -6,6 +6,7 @@ import { talk, NO_CHANGE, CLEAR, POP } from '../talk'
 
 import { part } from './part'
 
+const variables = {}
 export const story =
 	part.pipe(
 		switchMap(
@@ -13,7 +14,7 @@ export const story =
 				const el = document.querySelector('title')
 				if (el && title) el.innerText = title
 				return from(body).pipe(
-					concatMap(talk({})),
+					concatMap(talk(variables)),
 				)
 			}
 		),

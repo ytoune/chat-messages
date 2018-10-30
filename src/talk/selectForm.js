@@ -47,7 +47,6 @@ export const selectForm = (vars, name, _enums, ...opts) => {
 				selected: [],
 			}
 			this.select = async ({target: {value: v}}) => {
-				console.log(v)
 				vars[name] = multiple ? v : v.join()
 				let ok
 				await this.setState(s => {
