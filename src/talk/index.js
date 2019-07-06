@@ -1,14 +1,9 @@
-
 import { of } from 'rxjs'
 
 import { set } from './set'
 import { message } from './message'
 import { delay } from './delay'
-import {
-	dateForm,
-	timeForm,
-	datetimeForm,
-} from './dateForm'
+import { dateForm, timeForm, datetimeForm } from './dateForm'
 import { enumForm } from './enumForm'
 import { selectForm } from './selectForm'
 import { link } from './link'
@@ -20,11 +15,7 @@ import { when } from './when'
 
 export { readFile } from './getStory'
 
-export {
-	CLEAR,
-	NO_CHANGE,
-	POP,
-} from './consts'
+export { CLEAR, NO_CHANGE, POP } from './consts'
 
 const table = {
 	set,
@@ -42,16 +33,11 @@ const table = {
 }
 
 export const talk = vars => ([method, ...args]) => {
-
 	const fn = table[method]
 
-	const view =
-		fn ?
-			fn(vars, ...args) :
-			of()
+	const view = fn ? fn(vars, ...args) : of()
 
 	return view
-
 }
 
 table.when = when(talk)

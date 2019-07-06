@@ -1,4 +1,3 @@
-
 import React, { Fragment } from 'react'
 
 import Chip from '@material-ui/core/Chip'
@@ -10,10 +9,10 @@ import { withStyles } from '@material-ui/core/styles'
 const Line = withStyles({
 	root: {
 		marginTop: '.5em',
-	}
-})(({children, classes: {root}}) => <div className={root}>{children}</div>)
+	},
+})(({ children, classes: { root } }) => <div className={root}>{children}</div>)
 
-export const Message = ({icon, speaker, children}) => (
+export const Message = ({ icon, speaker, children }) => (
 	<Fragment>
 		<Hidable show={speaker}>
 			<Chip
@@ -23,8 +22,6 @@ export const Message = ({icon, speaker, children}) => (
 				variant="outlined"
 			/>
 		</Hidable>
-		<Line>{
-			children
-		}</Line>
+		<Line>{children}</Line>
 	</Fragment>
 )

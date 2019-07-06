@@ -1,4 +1,3 @@
-
 import { of, from } from 'rxjs'
 import { concatMap } from 'rxjs/operators'
 
@@ -7,8 +6,9 @@ export const when = talk => (vars, ...args) => {
 		const cond = args.shift()
 		if ('string' === typeof cond && args.length) {
 			const body = args.shift()
-			if (!isArray(body)) throw new Error('syntax error, body is required to be array')
-			const [name, op, value] = `${cond}`.split(/\s/gui)
+			if (!isArray(body))
+				throw new Error('syntax error, body is required to be array')
+			const [name, op, value] = `${cond}`.split(/\s/giu)
 			const fn = table[op]
 			if (!fn) throw new Error('fail to parse condition')
 			if (fn(vars[name], value)) {
@@ -23,8 +23,9 @@ export const when = talk => (vars, ...args) => {
 	return of()
 }
 
-const {isArray} = Array
+const { isArray } = Array
 
+/* eslint-disable eqeqeq */
 const table = {
 	'=': (q, w) => q == w,
 	'==': (q, w) => q == w,
@@ -34,5 +35,6 @@ const table = {
 	'<=': (q, w) => q <= w,
 	'>': (q, w) => q > w,
 	'>=': (q, w) => q >= w,
-	'has': (q, w) => ~q.indexOf(w),
+	has: (q, w) => ~q.indexOf(w),
 }
+/* eslint-enable */

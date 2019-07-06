@@ -1,4 +1,3 @@
-
 import React, { Component, createRef } from 'react'
 import { of } from 'rxjs'
 import { concatMap, filter } from 'rxjs/operators'
@@ -12,30 +11,34 @@ import { Right } from '../views'
 
 import { withStyles } from '@material-ui/core/styles'
 
-const FormWrap = withStyles(t => ({
-	root: {
-		margin: t.spacing.unit,
-		minWidth: 120,
-		maxWidth: 300,
-	}
-}), {withTheme: true})(FormControl)
+const FormWrap = withStyles(
+	t => ({
+		root: {
+			margin: t.spacing.unit,
+			minWidth: 120,
+			maxWidth: 300,
+		},
+	}),
+	{ withTheme: true },
+)(FormControl)
 
 export const selectForm = (vars, name, _enums, ...opts) => {
 	let res
 	const dict = _enums.reduce((d, n) => {
 		const [val, key] = Array.isArray(n) ? n : [n, n]
-		return {...d, [key]: val}
+		return { ...d, [key]: val }
 	}, {})
 	const getlabel = k => dict[k]
 	const enums = _enums.map(n => {
+		// eslint-disable-next-line no-unused-vars
 		const [val, key] = Array.isArray(n) ? n : [n, n]
 		return key
 	})
 	const multiple = opts.includes('multiple')
 	const allowEmpty = opts.includes('allowEmpty')
-	const placeholder = (
-		opts.filter(_ => /^placeholder=/.test(_)).pop()
-		|| '').slice(12) || '選択してください'
+	const placeholder =
+		(opts.filter(_ => /^placeholder=/.test(_)).pop() || '').slice(12) ||
+		'選択してください'
 	class Form extends Component {
 		constructor(...p) {
 			super(...p)
@@ -46,12 +49,12 @@ export const selectForm = (vars, name, _enums, ...opts) => {
 				open: false,
 				selected: [],
 			}
-			this.select = async ({target: {value: v}}) => {
+			this.select = async ({ target: { value: v } }) => {
 				vars[name] = multiple ? v : v.join()
 				let ok
 				await this.setState(s => {
 					ok = !multiple && v.length
-					return {...s, selected: v, done: !!ok}
+					return { ...s, selected: v, done: !!ok }
 				})
 				if (ok) res()
 			}
@@ -60,32 +63,33 @@ export const selectForm = (vars, name, _enums, ...opts) => {
 				let ok
 				await this.setState(s => {
 					ok = allowEmpty || (multiple && this.state.selected.length)
-					return {...s, open: false, done: !!ok}
+					return { ...s, open: false, done: !!ok }
 				})
 				this._flag = false
 				if (ok) res()
 			}
 			this.onOpen = v => {
 				if (this._flag) return
-				this.setState({open: true})
+				this.setState({ open: true })
 			}
 		}
 		render() {
 			const {
-				state: {open, done, selected},
+				state: { open, done, selected },
 				select,
 				onOpen,
 				onClose,
 			} = this
-			if (done) return (
-				<Right>
-					{selected.map(name => (
-						<Button color="primary" readOnly key={name}>
-							{getlabel(name)}
-						</Button>
-					))}
-				</Right>
-			)
+			if (done)
+				return (
+					<Right>
+						{selected.map(name => (
+							<Button color="primary" readOnly key={name}>
+								{getlabel(name)}
+							</Button>
+						))}
+					</Right>
+				)
 			return (
 				<Right>
 					<FormWrap>
@@ -95,19 +99,25 @@ export const selectForm = (vars, name, _enums, ...opts) => {
 							placeholder={placeholder}
 							value={selected}
 							onChange={select}
-							input={<Input onClick={onOpen} onFocus={onOpen}/>}
-							MenuProps={{...MenuProps, open, onClose}}
-							renderValue={
-								selected => selected.length ?
-									selected.map(getlabel).join(' ') :
+							input={<Input onClick={onOpen} onFocus={onOpen} />}
+							MenuProps={{ ...MenuProps, open, onClose }}
+							renderValue={selected =>
+								selected.length ? (
+									selected.map(getlabel).join(' ')
+								) : (
 									<em>{placeholder}</em>
+								)
 							}
 						>
 							<MenuItem disabled value="">
 								<em>{placeholder}</em>
 							</MenuItem>
 							{enums.map(name => (
-								<MenuItem key={name} value={name} selected={selected.includes(name)}>
+								<MenuItem
+									key={name}
+									value={name}
+									selected={selected.includes(name)}
+								>
 									{getlabel(name)}
 								</MenuItem>
 							))}
@@ -118,11 +128,7 @@ export const selectForm = (vars, name, _enums, ...opts) => {
 		}
 	}
 	return of(1, 0).pipe(
-		concatMap(
-			num => num ?
-				of(<Form/>) :
-				new Promise(r => res = r)
-		),
+		concatMap(num => (num ? of(<Form />) : new Promise(r => (res = r)))),
 		filter(_ => _),
 	)
 }

@@ -1,4 +1,3 @@
-
 import { CLEAR } from './consts'
 
 import { of } from 'rxjs'

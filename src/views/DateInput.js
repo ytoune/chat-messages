@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 import UtilsProvider from 'material-ui-pickers/MuiPickersUtilsProvider'
@@ -46,12 +45,15 @@ class Utils extends LuxonUtils {
 	}
 }
 
-const wrap = (Picker, over) => (props) => (
-	<UtilsProvider utils={Utils} locale="ja">
-		<Picker {...over} {...props}/>
-	</UtilsProvider>
-)
+const wrap = (Picker, over) => {
+	const MyPicker = props => (
+		<UtilsProvider utils={Utils} locale="ja">
+			<Picker {...over} {...props} />
+		</UtilsProvider>
+	)
+	return MyPicker
+}
 
-export const TimeInput = wrap(TimePicker, {ampm: false})
+export const TimeInput = wrap(TimePicker, { ampm: false })
 export const DateInput = wrap(DatePicker)
-export const DateTimeInput = wrap(DateTimePicker, {ampm: false})
+export const DateTimeInput = wrap(DateTimePicker, { ampm: false })
