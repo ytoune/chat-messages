@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { of } from 'rxjs'
 import { concatMap, filter } from 'rxjs/operators'
@@ -17,13 +16,13 @@ export const enumForm = (vars, name, enums) => {
 			}
 			this.select = v => {
 				vars[name] = v
-				this.setState({done: true, selected: v})
+				this.setState({ done: true, selected: v })
 				res()
 			}
 		}
 		render() {
 			const {
-				state: {done, selected},
+				state: { done, selected },
 				select,
 			} = this
 			return (
@@ -47,11 +46,7 @@ export const enumForm = (vars, name, enums) => {
 		}
 	}
 	return of(1, 0).pipe(
-		concatMap(
-			num => num ?
-				of(<Form/>) :
-				new Promise(r => res = r)
-		),
+		concatMap(num => (num ? of(<Form />) : new Promise(r => (res = r)))),
 		filter(_ => _),
 	)
 }

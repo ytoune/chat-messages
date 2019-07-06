@@ -2,7 +2,7 @@
 import React from 'react'
 
 import UtilsProvider from 'material-ui-pickers/MuiPickersUtilsProvider'
-import LuxonUtils from 'material-ui-pickers/utils/luxon-utils'
+import LuxonUtils from '@date-io/luxon'
 
 import TimePicker from 'material-ui-pickers/TimePicker'
 import DatePicker from 'material-ui-pickers/DatePicker'
