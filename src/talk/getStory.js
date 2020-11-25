@@ -7,7 +7,7 @@ import { stringify } from 'query-string'
 const parseYaml = _ => safeLoad(_.replace(/\](\s+)\[/giu, '],$1['))
 
 export const readFile = (file, query) =>
-	fetch(`./${file}?${stringify(query)}`)
+	fetch(`/chat-messages/${file}?${stringify(query)}`)
 		.then(r => r.text())
 		.then(parseYaml)
 		.then(pushPart)

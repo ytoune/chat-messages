@@ -1,11 +1,13 @@
 import React from 'react'
 
-import UtilsProvider from 'material-ui-pickers/MuiPickersUtilsProvider'
+import {
+	MuiPickersUtilsProvider as UtilsProvider,
+	TimePicker,
+	DatePicker,
+	DateTimePicker,
+} from '@material-ui/pickers'
 import LuxonUtils from '@date-io/luxon'
 
-import TimePicker from 'material-ui-pickers/TimePicker'
-import DatePicker from 'material-ui-pickers/DatePicker'
-import DateTimePicker from 'material-ui-pickers/DateTimePicker'
 
 class Utils extends LuxonUtils {
 	getYearText(date) {
