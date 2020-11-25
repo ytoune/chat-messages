@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/chat-messages/static/js/main.194e1b5c.chunk.js",
-    "main.js.map": "/chat-messages/static/js/main.194e1b5c.chunk.js.map",
+    "main.js": "/chat-messages/static/js/main.14644e78.chunk.js",
+    "main.js.map": "/chat-messages/static/js/main.14644e78.chunk.js.map",
     "runtime-main.js": "/chat-messages/static/js/runtime-main.63bd690f.js",
     "runtime-main.js.map": "/chat-messages/static/js/runtime-main.63bd690f.js.map",
-    "static/js/2.3599efd5.chunk.js": "/chat-messages/static/js/2.3599efd5.chunk.js",
-    "static/js/2.3599efd5.chunk.js.map": "/chat-messages/static/js/2.3599efd5.chunk.js.map",
+    "static/js/2.0006317d.chunk.js": "/chat-messages/static/js/2.0006317d.chunk.js",
+    "static/js/2.0006317d.chunk.js.map": "/chat-messages/static/js/2.0006317d.chunk.js.map",
     "index.html": "/chat-messages/index.html",
-    "static/js/2.3599efd5.chunk.js.LICENSE.txt": "/chat-messages/static/js/2.3599efd5.chunk.js.LICENSE.txt"
+    "static/js/2.0006317d.chunk.js.LICENSE.txt": "/chat-messages/static/js/2.0006317d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.63bd690f.js",
-    "static/js/2.3599efd5.chunk.js",
-    "static/js/main.194e1b5c.chunk.js"
+    "static/js/2.0006317d.chunk.js",
+    "static/js/main.14644e78.chunk.js"
   ]
 }
