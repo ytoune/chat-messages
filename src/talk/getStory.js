@@ -4,7 +4,7 @@ import { safeLoad } from 'js-yaml'
 import { pushPart } from '../subjects/part'
 import { stringify } from 'query-string'
 
-const parseYaml = _ => safeLoad(_.replace(/\](\s+)\[/giu, '],$1['))
+const parseYaml = _ => safeLoad(_)
 
 export const readFile = (file, query) =>
 	fetch(`/chat-messages/${file}?${stringify(query)}`)
